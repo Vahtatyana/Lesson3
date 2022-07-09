@@ -11,6 +11,7 @@ Big_datas = ['Пятнадцатое октября 1814 года', 'Трина�
 names_datas = dict(zip(names, datas))
 Big_names_datas = dict(zip(names, Big_datas))
 
+
 print(names_datas)
 
 print(Big_names_datas)
@@ -19,7 +20,3 @@ list_names_datas = list(names_datas.items())
 questions = random.sample(list_names_datas, 5)
 
 print(questions)
-
-
-for key, val in questions:
-    ans = int(input('Введите дату рождения писателя' key()  :))
