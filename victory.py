@@ -1,22 +1,33 @@
 import random
+import datetime as DT
+import locale
+locale.setlocale(locale.LC_ALL, '')
 
-names = ['Лермонтов', 'Михалков', 'Тютчев', 'Блок', 'Есенин','Чехов','Маяковский', 'Маршак']
+quiz_dict={"Александр Пушкин" : "06.06.1799",
+           "Уинстон Черчилль" : "30.11.1874",
+           "Илон Маск" : "28.06.1971",
+           "Оскар Уайльд" : "16.10.1854",
+           "Никола Тесла" : "10.07.1856",
+           "Мария Кюри" : "07.11.1867",
+           "Фрида Кало" : "06.07.1907",
+           "Елизавета II" : "21.04.1926",
+           "Элеонора Рузвельт" : "11.10.1884",
+           "Коко Шанель" : "19.08.1883"
+                                        }
+draw = list(quiz_dict.items())
+draw_dict = dict(random.sample(draw, 5))
+print ("ДОБРО ПОЖАЛОВАТЬ НА НАШУ ВИКТОРИНУ! \nПожалуйста, введите дату рождения знаменитости в формате dd.mm.yyyy")
+score=0
+for i, j in draw_dict.items():
+    print (i)
+    answer=str(input('Ваш ответ: '))
+    if answer==j:
+        print ('Совершенно верно!')
+        score +=1
+    else:
+        date = DT.datetime.strptime(j, '%d.%m.%Y').date()
+        print('Увы! Правильный ответ')
+        print(date.strftime('%d %B %Y года'))
 
-datas = ['15.10.1814', '13.03.1913','05.12.1820', '8.11.1880', '03.10.1895', '29.01.1860', '19.07.1893', '03.11.1887']
-
-Big_datas = ['Пятнадцатое октября 1814 года', 'Тринадцатое марта 1913 года','Пятое января 1820 года',
-             'Восьмое Ноября 1880 года', 'Третье Октября 1895 года', 'Двадцать девятое января 1860 года',
-             'Деваятнадцатое июля 1893года', 'Третье ноября 1887 года']
-
-names_datas = dict(zip(names, datas))
-Big_names_datas = dict(zip(names, Big_datas))
-
-
-print(names_datas)
-
-print(Big_names_datas)
-
-list_names_datas = list(names_datas.items())
-questions = random.sample(list_names_datas, 5)
-
-print(questions)
+mistake=5-score
+print ("Количество правильных ответов: " , score, ", неправильных ответов: ", mistake, "\n Попробуйте снова!!!")
